@@ -10,8 +10,13 @@ const homeView = (req: Request, res: Response) => {
   });
 };
 
+const aboutView = (req: Request, res: Response) => {
+  res.render("about", {});
+};
+
 //routes
 routes.route("/").get(homeView);
+routes.route("/about").get(aboutView);
 routes.use("/api", apiRouter);
 
 export default routes;
