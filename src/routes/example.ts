@@ -1,8 +1,8 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import { fetchExample } from "../controllers/example";
 
-const exampleRouter = Router();
+const apiRouter = Router();
 
-exampleRouter.route("/").get(fetchExample);
+// exampleRouter.route("/home").get(registerView);
 
-export default exampleRouter;
+export default apiRouter;
