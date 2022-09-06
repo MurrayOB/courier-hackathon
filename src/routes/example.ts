@@ -1,8 +1,8 @@
-import { Router, Request, Response } from "express";
-import { fetchExample } from "../controllers/example";
+import { Router } from "express";
+import { sendEmail } from "../controllers/courier";
 
 const apiRouter = Router();
 
-// exampleRouter.route("/home").get(registerView);
+apiRouter.route("/").get(sendEmail);
 
 export default apiRouter;

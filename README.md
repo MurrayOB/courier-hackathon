@@ -1,13 +1,11 @@
-# This is my EXPRESS TS template
+# Description of project:
 
-## INSTALL
+# Inspiration behind the project:
 
-```
-npm install
-```
+# Explanation of problem it solves (if any)
 
-## DEV
+# Tools and technologies used to build it and how they all fit together
 
-```
-npm run dev
-```
+# Challenges you faced while building
+
+# What you learned

@@ -12,6 +12,7 @@
   "author": "Murray O'Brien",
   "license": "ISC",
   "dependencies": {
+    "@trycourier/courier": "^3.15.0",
     "axios": "^0.27.2",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",

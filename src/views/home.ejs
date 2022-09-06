@@ -1,10 +1,177 @@
 <%- include('master.ejs', {title: 'Home'}); %>
-<h1>Hello, welcome <%= data.name %></h1>
-<% data.people.forEach((person) => { %>
-<p><%= person %></p>
-<% }); %>
-<div v-scope="{ count: 0 }">
-  {{ count }}
-  <button @click="count++">inc</button>
-</div>
-<a href="/about">About</a>
+
+<!-- SECTION 1 - HERO -->
+<section class="py-20">
+  <div
+    class="container items-center max-w-6xl px-4 px-10 mx-auto sm:px-20 md:px-32 lg:px-16"
+  >
+    <div class="flex flex-wrap items-center -mx-3">
+      <div class="order-1 w-full px-3 lg:w-1/2 lg:order-0">
+        <div class="w-full lg:max-w-md">
+          <h2
+            class="mb-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl font-heading"
+          >
+            Hello, welcome to my submission to the Courier Hacks!<br />
+          </h2>
+          <p class="mb-4 font-medium tracking-tight text-gray-400 xl:mb-6">
+            The hackathon's requirements:
+          </p>
+          <ul>
+            <li class="flex items-center py-2 space-x-4 xl:py-3 tails-relative">
+              <svg
+                class="w-8 h-8 text-pink-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
+                ></path>
+              </svg>
+              <span class="font-medium text-gray-500"
+                >Demonstrate proper app-to-user notifications with the Courier
+                API</span
+              >
+            </li>
+            <li class="flex items-center py-2 space-x-4 xl:py-3">
+              <svg
+                class="w-8 h-8 text-yellow-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                ></path>
+              </svg>
+              <span class="font-medium text-gray-500">Good design</span>
+            </li>
+            <li class="flex items-center py-2 space-x-4 xl:py-3">
+              <svg
+                class="w-8 h-8 text-green-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
+              </svg>
+              <span class="font-medium text-gray-500">User friendly</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="w-full px-3 mb-12 lg:w-1/2 order-0 lg:order-1 lg:mb-0">
+        <img
+          class="mx-auto sm:max-w-sm lg:max-w-full"
+          src="https://cdn.devdojo.com/images/november2020/feature-graphic.png"
+          alt="feature image"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SECTION 2 - ACTIONS -->
+<section class="py-8 bg-white lg:bg-sky-100">
+  <div class="px-4 mx-auto text-center max-w-7xl sm:px-6 lg:px-8">
+    <div class="flex justify-center space-x-3">
+      <a
+        href="#demo"
+        class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow hover:bg-indigo-700"
+        data-primary="indigo-600"
+        data-rounded="rounded-md"
+        >See Demonstration</a
+      >
+      <a
+        href="#about-section"
+        class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-indigo-700 bg-indigo-100 border border-transparent rounded-md hover:bg-indigo-200"
+        data-primary="indigo-600"
+        data-rounded="rounded-md"
+        >See About</a
+      >
+    </div>
+  </div>
+</section>
+<!-- SECTION 3 - ABOUT -->
+<section
+  id="about-section"
+  class="relative py-16 bg-white min-w-screen animation-fade animation-delay"
+>
+  <div class="container px-0 px-8 mx-auto sm:px-12 xl:px-5">
+    <p
+      class="text-xs font-bold text-left text-indigo-500 uppercase sm:mx-6 sm:text-center sm:text-normal sm:font-bold"
+      data-primary="pink-500"
+    >
+      About
+    </p>
+    <h3
+      class="mt-1 text-2xl font-bold text-left text-gray-800 sm:mx-6 sm:text-3xl md:text-4xl lg:text-5xl sm:text-center sm:mx-0"
+    >
+      What I've made:<br />
+    </h3>
+    <div
+      class="w-full px-6 py-6 mx-auto mt-10 bg-white border border-gray-200 rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3"
+      data-rounded="rounded-lg"
+      data-rounded-max="rounded-full"
+    >
+      <h3
+        class="text-lg font-bold text-indigo-500 sm:text-xl md:text-2xl"
+        data-primary="purple-500"
+      >
+        How it demonstrates the use of courier?
+      </h3>
+      <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
+        My demonstration is simple, enter your email to receive notifications
+        from ...
+      </p>
+      <p></p>
+    </div>
+    <div
+      class="w-full px-6 py-6 mx-auto mt-10 bg-white border border-gray-200 rounded-lg sm:px-8 md:px-12 sm:py-8 sm:shadow lg:w-5/6 xl:w-2/3"
+      data-rounded="rounded-lg"
+      data-rounded-max="rounded-full"
+    >
+      <h3
+        class="text-lg font-bold text-indigo-500 sm:text-xl md:text-2xl"
+        data-primary="purple-500"
+      >
+        How to use it?
+      </h3>
+      <p class="mt-2 text-base text-gray-600 sm:text-lg md:text-normal">
+        1. Enter your email or alternatively a disposable email from
+        https://temp-mail.org/en/ for example. <br />2. Choose to subscribe or
+        unsubscribe as receive up to date data from ...
+      </p>
+    </div>
+  </div>
+</section>
+<!-- SECTION - DEMO -->
+<section id="demo">
+  <h3
+    class="mt-1 text-2xl font-bold text-left text-gray-800 sm:mx-6 sm:text-3xl md:text-4xl lg:text-5xl sm:text-center sm:mx-0"
+  >
+    Demo:<br />
+  </h3>
+  <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+    <div class="px-4 py-6 sm:px-0">
+      <div class="h-96 rounded-lg border-4 border-dashed border-gray-200">
+        <%- include('components/main.ejs'); %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('layouts/footer.ejs'); %>
