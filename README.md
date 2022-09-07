@@ -2,10 +2,25 @@
 
 # Inspiration behind the project:
 
-# Explanation of problem it solves (if any)
+- I moved to Spain this year and I wanted to learn as much Spanish as possible but between working a 9 - 5 and just regular life I find it difficult to fit in the time to learn new vocabulary.
 
-# Tools and technologies used to build it and how they all fit together
+# Explanation of problem it solves (if any):
 
-# Challenges you faced while building
+# Tools and technologies used to build it and how they all fit together:
 
-# What you learned
+Heroku (hosting), Firebase (database), Express/ Node.js (server), EJS (html/teplating),
+Courier API (notifications), Tailwind (styling)
+
+# Challenges you faced while building:
+
+- Finding and connecting the different apis for the data source.
+
+# What you learned:
+
+# References:
+
+List of Free apis:
+https://landof.dev/public-apis/
+
+//Api for description of word
+https://dictionaryapi.dev/
