@@ -8,15 +8,16 @@ export const sendEmail = async (req: Request, res: Response) => {
 
   const { requestId } = await courier.send({
     message: {
-      content: {
-        title: "Welcome to Courier!",
-        body: "Want to hear a joke? {{joke}}",
-      },
-      data: {
-        joke: "Why was the JavaScript developer sad? Because they didn't Node how to Express themselves",
-      },
       to: {
-        email: process.env.courier_email,
+        email: "",
+      },
+      template: "HECEE75KFB4V01PTKX7F06H6F5ZP",
+      data: {
+        name: "Murray",
+        word: "Hola",
+        language: "Spanish",
+        translation: "Hello",
+        description: "To greet someone",
       },
     },
   });

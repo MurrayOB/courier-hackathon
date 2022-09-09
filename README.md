@@ -1,5 +1,7 @@
 # Description of project:
 
+Built from scratch
+
 # Inspiration behind the project:
 
 - I moved to Spain this year and I wanted to learn as much Spanish as possible but between working a 9 - 5 and just regular life I find it difficult to fit in the time to learn new vocabulary.
@@ -14,6 +16,8 @@ Courier API (notifications), Tailwind (styling)
 # Challenges you faced while building:
 
 - Finding and connecting the different apis for the data source.
+- Figuring out how to send dynamic notifications as some people have subscribed
+  to different languages therefore needing the different translations.
 
 # What you learned:
 
