@@ -1,7 +1,32 @@
 import axios from "axios";
 import { startOfDay } from "date-fns";
 import fs from "firebase-admin";
+import { IUser } from "../models/user";
 import { IWordOfTheDay } from "../models/word-of-the-day";
+import { fetchAllUsers } from "./user";
+import { fetchWordOfTheDay } from "./word-of-the-day";
+import * as _ from "lodash";
+import { mailWord } from "./mail";
+
+export const sendWordOfTheDay = async (wordOfTheDay: IWordOfTheDay) => {
+  // const wordOfTheDay: IWordOfTheDay = await fetchWordOfTheDay();
+  const users: IUser[] = await fetchAllUsers();
+  //combine users with the same chosen language
+  const groupedByLanguage: any = _.values(_.groupBy(users, "language"));
+  //translate word for all the user
+  for (const x of groupedByLanguage) {
+    const users: IUser[] = x as IUser[];
+    const language = users[0].language;
+    const translatedWord = await translateWord(
+      wordOfTheDay.translation,
+      language
+    );
+    let newWordOfTheDay = wordOfTheDay;
+    newWordOfTheDay.word = translatedWord;
+    //send to users who subscribe to the same language
+    await mailWord(users, newWordOfTheDay);
+  }
+};
 
 //create word of the day and store it
 export const createWordOfTheDay = async () => {
@@ -13,6 +38,7 @@ export const createWordOfTheDay = async () => {
     date: startOfDay(new Date()),
   };
   await storeWordOfTheDay(wordOfTheDay);
+  await sendWordOfTheDay(wordOfTheDay);
 };
 
 const fetchRandomEnglishWord = async () => {

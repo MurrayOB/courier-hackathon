@@ -8,6 +8,8 @@ Built from scratch
 
 # Explanation of problem it solves (if any):
 
+Sending to content to individuals who subsrcibe to content in a different language
+
 # Tools and technologies used to build it and how they all fit together:
 
 Heroku (hosting), Firebase (database), Express/ Node.js (server), EJS (html/teplating),
