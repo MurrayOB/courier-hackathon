@@ -1,19 +1,19 @@
 import axios from "axios";
+import { startOfDay } from "date-fns";
 import fs from "firebase-admin";
+import { IWordOfTheDay } from "../models/word-of-the-day";
 
 export const fetchWordOfTheDay = () => {};
 
 export const createWordOfTheDay = async () => {
   const englishWord = await fetchRandomEnglishWord();
   const wordDescription = await fetchWordDescription(englishWord);
-  // const translatedWord = await translateWord(englishWord, "es");
-  const wordOfTheDay = {
+  const wordOfTheDay: IWordOfTheDay = {
     translation: englishWord,
     description: wordDescription,
-    date: new Date(),
+    date: startOfDay(new Date()),
   };
   await storeWordOfTheDay(wordOfTheDay);
-  return wordOfTheDay;
 };
 
 const fetchRandomEnglishWord = async () => {
@@ -54,7 +54,7 @@ const fetchWordDescription = (word: string) => {
   return description;
 };
 
-const translateWord = (word: string, language: string) => {
+export const translateWord = (word: string, language: string) => {
   const options = {
     method: "POST",
     url: `https://translation.googleapis.com/language/translate/v2?key=${process.env.google_api_key}`,

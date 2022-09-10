@@ -17,7 +17,7 @@ Courier API (notifications), Tailwind (styling)
 
 - Finding and connecting the different apis for the data source.
 - Figuring out how to send dynamic notifications as some people have subscribed
-  to different languages therefore needing the different translations.
+  to different languages therefore needing the different translations. Niche: What if you have a multi language audience and want to send them the same notification but translated in their language.
 
 # What you learned:
 

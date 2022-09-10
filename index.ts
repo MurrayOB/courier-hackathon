@@ -5,6 +5,7 @@ import fs, { ServiceAccount } from "firebase-admin";
 import serviceAccount from "./firestore.json";
 import bodyParser from "body-parser";
 import cors from "cors";
+import { initScheduledJobs } from "./src/core/cron-jobs";
 
 dotenv.config();
 const app: Express = express();
@@ -21,6 +22,9 @@ app.use(cors);
 fs.initializeApp({
   credential: fs.credential.cert(<ServiceAccount>serviceAccount),
 });
+
+//CRON JOB
+initScheduledJobs();
 
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
