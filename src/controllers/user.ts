@@ -32,6 +32,7 @@ const subscribe = async (req: Request, res: Response) => {
       },
       template: "BTBS36FJ5EMK28JAV5HF603JHBCN",
       data: {
+        email: email,
         word: word,
       },
     },
@@ -46,7 +47,7 @@ const unsubscribe = async (req: Request, res: Response) => {
       .status(200)
       .json({ success: false, message: "No email provided" });
   await unsubscribeFromApp(email);
-  return res.status(200).json({ success: true, message: "Unsubscribed" });
+  return res.send("Unsubscribed");
 };
 
 export { subscribe, unsubscribe };

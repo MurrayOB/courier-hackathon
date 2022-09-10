@@ -1,6 +1,8 @@
 const subscribe = async () => {
   const emailInput = document.querySelector("#email-input").value;
   const languageInput = document.querySelector("#language-input").value;
+  const subscribeBtn = document.querySelector("#subscribe-btn");
+  subscribeBtn.style.display = "none";
   await fetch(`/api/user/subscribe?email=${emailInput}&lang=${languageInput}`)
     .then((response) => {
       response.json().then((json) => {
