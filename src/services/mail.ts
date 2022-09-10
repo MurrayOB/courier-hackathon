@@ -1,6 +1,7 @@
 import { CourierClient } from "@trycourier/courier";
 import { IUser } from "../models/user";
 import { IWordOfTheDay } from "../models/word-of-the-day";
+import { getLanguageNameByCode } from "./language";
 
 export const mailWord = async (users: IUser[], wordOfTheDay: IWordOfTheDay) => {
   const courier = CourierClient({
@@ -14,7 +15,7 @@ export const mailWord = async (users: IUser[], wordOfTheDay: IWordOfTheDay) => {
       data: {
         name: user.email,
         word: wordOfTheDay.word,
-        language: user.language,
+        language: getLanguageNameByCode(user.language),
         translation: wordOfTheDay.translation,
         description: wordOfTheDay.description,
       },

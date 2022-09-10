@@ -6,20 +6,28 @@ import {
 import fs from "firebase-admin";
 
 const subscribe = async (req: Request, res: Response) => {
-  const email = "";
-  const language = "af";
+  const email = req.query.email as string;
+  const language = req.query.lang as string;
+  if (!email)
+    return res
+      .status(200)
+      .json({ success: false, message: "No email provided" });
+  if (!language)
+    return res
+      .status(200)
+      .json({ success: false, message: "No language provided" });
   await subscribeToApp(email, language);
   return res.status(202).json({ success: true, message: "Subscribed" });
 };
 
 const unsubscribe = async (req: Request, res: Response) => {
-  const email = "";
+  const email = req.query.email as string;
+  if (!email)
+    return res
+      .status(200)
+      .json({ success: false, message: "No email provided" });
   await unsubscribeFromApp(email);
   return res.status(200).json({ success: true, message: "Unsubscribed" });
-};
-
-const fetchUsers = async (req: Request, res: Response) => {
-  const db = fs.firestore();
 };
 
 export { subscribe, unsubscribe };
