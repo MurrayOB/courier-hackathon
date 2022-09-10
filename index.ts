@@ -18,9 +18,10 @@ app.use(routes);
 app.use(bodyParser.json());
 app.use(cors);
 
+const firebaseCredentials = getFirebaseCredentials();
 //FIREBASE
 fs.initializeApp({
-  credential: fs.credential.cert(<ServiceAccount>getFirebaseCredentials()),
+  credential: fs.credential.cert(<ServiceAccount>firebaseCredentials),
 });
 
 //CRON JOB
