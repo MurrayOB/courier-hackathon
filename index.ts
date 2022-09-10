@@ -2,10 +2,10 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import routes from "./src/routes/index";
 import fs, { ServiceAccount } from "firebase-admin";
-import serviceAccount from "./firestore.json";
 import bodyParser from "body-parser";
 import cors from "cors";
 import { initScheduledJobs } from "./src/core/cron-jobs";
+import { getFirebaseCredentials } from "./src/core/firebase";
 
 dotenv.config();
 const app: Express = express();
@@ -20,7 +20,7 @@ app.use(cors);
 
 //FIREBASE
 fs.initializeApp({
-  credential: fs.credential.cert(<ServiceAccount>serviceAccount),
+  credential: fs.credential.cert(<ServiceAccount>getFirebaseCredentials()),
 });
 
 //CRON JOB
