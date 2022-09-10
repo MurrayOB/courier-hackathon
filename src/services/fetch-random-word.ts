@@ -3,8 +3,7 @@ import { startOfDay } from "date-fns";
 import fs from "firebase-admin";
 import { IWordOfTheDay } from "../models/word-of-the-day";
 
-export const fetchWordOfTheDay = () => {};
-
+//create word of the day and store it
 export const createWordOfTheDay = async () => {
   const englishWord = await fetchRandomEnglishWord();
   const wordDescription = await fetchWordDescription(englishWord);

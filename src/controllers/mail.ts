@@ -1,28 +1,15 @@
 import { Request, Response } from "express";
 import { CourierClient } from "@trycourier/courier";
-import fs from "firebase-admin";
 import * as _ from "lodash";
 import { IWordOfTheDay } from "../models/word-of-the-day";
 import { translateWord } from "../services/fetch-random-word";
-
-export interface IUser {
-  email: string;
-  language: string;
-}
+import { IUser } from "../models/user";
+import { fetchAllUsers } from "../services/user";
+import { fetchWordOfTheDay } from "../services/word-of-the-day";
 
 export const sendWordOfTheDay = async (req: Request, res: Response) => {
-  const db = fs.firestore();
-  //word
-  const snapshot = await db
-    .collection("words")
-    .where("date", "<=", new Date())
-    .get();
-  const wordRef: any = snapshot.docs.map((doc) => doc.data());
-  const wordOfTheDay: IWordOfTheDay = wordRef[0];
-  //users
-  const userSnapshot = await db.collection("users").get();
-  const data = userSnapshot.docs.map((doc) => doc.data());
-  const users: IUser[] = data as IUser[];
+  const wordOfTheDay: IWordOfTheDay = await fetchWordOfTheDay();
+  const users: IUser[] = await fetchAllUsers();
   //combine users with the same chosen language
   const groupedByLanguage: any = _.values(_.groupBy(users, "language"));
   //translate word for all the user
