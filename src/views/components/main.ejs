@@ -13,7 +13,7 @@
     </p>
   </div>
 
-  <form id="form" action="/api/user/subscribe" method="post">
+  <div id="my-form">
     <div class="grid gap-6 mb-6 md:grid-cols-2">
       <div class="mb-1 mr-3">
         <label
@@ -23,7 +23,7 @@
         >
         <input
           type="email"
-          id="email"
+          id="email-input"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="john.doe@company.com"
           required
@@ -38,30 +38,40 @@
         >
         <select
           required
-          id="languages"
+          id="language-input"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
           <option selected>Choose a language</option>
-          <option value="es">Spanish</option>
+          <% languages.forEach(function(language){ %>
+          <option value="<%=language.code%>"><%= language.language%></option>
+          <% }); %>
         </select>
       </div>
     </div>
-  </form>
-  <button
-    class="mr-4 inline-flex items-center justify-center px-5 py-3 text-base font-medium text-white bg-indigo-500 border border-transparent rounded-md shadow hover:bg-indigo-700"
-    data-primary="indigo-600"
-    data-rounded="rounded-md"
-  >
-    Subscribe
-  </button>
-  <button
-    class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-white bg-red-500 border border-transparent rounded-md shadow hover:bg-red-600"
-    data-primary="indigo-600"
-    data-rounded="rounded-md"
-  >
-    Unsubscribe
-  </button>
+    <button
+      class="mr-4 inline-flex items-center justify-center px-5 py-3 text-base font-medium text-white bg-indigo-500 border border-transparent rounded-md shadow hover:bg-indigo-700"
+      data-primary="indigo-600"
+      data-rounded="rounded-md"
+      onclick="subscribe()"
+    >
+      Subscribe
+    </button>
+    <div class="lg:w-3/6 mr-4">
+      <div
+        id="success-alert"
+        class="flex p-4 mb-4 bg-green-100 rounded-lg dark:bg-green-200 mt-4 hidden"
+        role="alert"
+      >
+        <div class="ml-3">
+          <p
+            id="success-msg"
+            class="text-sm font-medium text-green-700 dark:text-green-800"
+          ></p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="ml-6 mt-6 text-gray-500">
+<div class="ml-6 pb-6 mt-6 text-gray-500">
   <p>*Note - You can unsubscribe at any point.</p>
 </div>
