@@ -5,12 +5,15 @@ import {
 } from "../services/subscription";
 import { CourierClient } from "@trycourier/courier";
 import { translateWord } from "../services/fetch-random-word";
+import { check } from "express-validator";
 
 const subscribe = async (req: Request, res: Response) => {
-  const email = req.query.email as string;
-  const language = req.query.lang as string;
+  const emailParam = req.query.email as string;
+  const languageParam = req.query.lang as string;
+  const email = emailParam.trim();
+  const language = languageParam.trim();
 
-  if (!email)
+  if (!check(email).isEmail())
     return res
       .status(200)
       .json({ success: false, message: "No email provided" });

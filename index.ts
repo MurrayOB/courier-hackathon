@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import { initScheduledJobs } from "./src/core/cron-jobs";
 import { getFirebaseCredentials } from "./src/core/firebase";
+import helmet from "helmet";
 
 dotenv.config();
 const app: Express = express();
@@ -17,9 +18,10 @@ app.use(express.static("public"));
 app.use(routes);
 app.use(bodyParser.json());
 app.use(cors);
+app.use(helmet());
 
-const firebaseCredentials = getFirebaseCredentials();
 //FIREBASE
+const firebaseCredentials = getFirebaseCredentials();
 fs.initializeApp({
   credential: fs.credential.cert(<ServiceAccount>firebaseCredentials),
 });
