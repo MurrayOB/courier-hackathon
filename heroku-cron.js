@@ -11,7 +11,7 @@ const ping = async () => {
       console.log("success");
     })
     .catch((error) => {
-      console.log("error");
+      console.log(error);
     });
 };
 
