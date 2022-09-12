@@ -4,7 +4,6 @@ import routes from "./src/routes/index";
 import fs, { ServiceAccount } from "firebase-admin";
 import bodyParser from "body-parser";
 import cors from "cors";
-import { initScheduledJobs } from "./src/core/cron-jobs";
 import { getFirebaseCredentials } from "./src/core/firebase";
 import helmet from "helmet";
 
@@ -25,9 +24,6 @@ const firebaseCredentials = getFirebaseCredentials();
 fs.initializeApp({
   credential: fs.credential.cert(<ServiceAccount>firebaseCredentials),
 });
-
-//CRON JOB
-// initScheduledJobs();
 
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
