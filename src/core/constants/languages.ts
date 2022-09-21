@@ -79,10 +79,10 @@ export const languages = [
     language: "Dutch",
     code: "nl",
   },
-  {
-    language: "English",
-    code: "en",
-  },
+  // {
+  //   language: "English",
+  //   code: "en",
+  // },
   {
     language: "Esperanto",
     code: "eo",
