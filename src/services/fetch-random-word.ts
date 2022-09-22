@@ -32,10 +32,14 @@ export const sendWordOfTheDay = async (wordOfTheDay: IWordOfTheDay) => {
 export const createWordOfTheDay = async () => {
   const englishWord = await fetchRandomEnglishWord();
   const wordDescription = await fetchWordDescription(englishWord);
+  const spanishWord = await translateWord(englishWord, "es");
+  const germanWord = await translateWord(englishWord, "de");
   const wordOfTheDay: IWordOfTheDay = {
     translation: englishWord,
     description: wordDescription,
     date: startOfDay(new Date()),
+    spanish: spanishWord,
+    german: germanWord,
   };
   await storeWordOfTheDay(wordOfTheDay);
   await sendWordOfTheDay(wordOfTheDay);

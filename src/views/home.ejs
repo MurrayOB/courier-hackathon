@@ -192,7 +192,7 @@
   </div>
 </section>
 <!-- SECTION - DEMO -->
-<div class="">
+<div class="" id="demo">
   <h3
     class="mt-1 sm:ml-4 pl-4 text-2xl font-bold text-left text-gray-800 sm:mx-6 sm:text-3xl md:text-4xl lg:text-5xl sm:text-center sm:mx-0"
   >
@@ -209,5 +209,74 @@
   </div>
 </section>
 <br />
+<!-- MODAL -->
+<div
+  id="notificationModal"
+  aria-hidden="true"
+  class="hidden fixed bottom-0 right-0 z-50 md:w-5/12"
+>
+  <div class="relative p-4">
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow dark:bg-gray-900">
+      <!-- Modal header -->
+      <div
+        class="flex justify-between items-start p-2 rounded-t border-b dark:border-gray-600"
+      >
+        <h3 class="text-xl pl-4 font-semibold text-gray-900 dark:text-white">
+          Hello :)
+        </h3>
+        <button
+          type="button"
+          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+          data-modal-toggle="defaultModal"
+          onclick="closeModal()"
+        >
+          <svg
+            aria-hidden="true"
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+      </div>
+      <!-- Modal body -->
+      <div class="pl-2 ml-2 m-1 p-1 pb-1 space-y-6">
+        <p class="text-white-500 dark:text-gray-400">
+          Today's word is: <%-
+          data.wordOfTheDay.translation.charAt(0).toUpperCase() +
+          data.wordOfTheDay.translation.slice(1) %>, translated to
+          <br />
+          Spanish its: <%- data.wordOfTheDay.spanish %> or in German its: <%-
+          data.wordOfTheDay.german %>
+        </p>
+        <p class="text-gray-500 dark:text-gray-400">
+          Want to receive something like this every day to help you learn
+          vocabulary in your chosen language? Then click subscribe below!
+        </p>
+      </div>
+      <!-- Modal footer -->
+      <div
+        class="flex items-center pl-4 p-2 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600"
+      >
+        <button
+          onclick="modalSubscribe()"
+          data-modal-toggle="defaultModal"
+          type="button"
+          class="text-white bg-indigo-500 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        >
+          Subscribe
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 <%- include('layouts/footer.ejs'); %>
 <script src="js/main.js"></script>

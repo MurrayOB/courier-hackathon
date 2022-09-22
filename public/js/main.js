@@ -1,3 +1,16 @@
+window.onload = function (event) {
+  const closed = sessionStorage.getItem("modalClosed");
+  if (closed) {
+    return;
+  }
+  setTimeout(function () {
+    // const url = window.location.href + "/assets/notification.mp3";
+    // const audio = new Audio(url);
+    // audio.play();
+    notificationModal.style.display = "block";
+  }, 4000);
+};
+
 const subscribe = async () => {
   const emailInput = document.querySelector("#email-input").value;
   const languageInput = document.querySelector("#language-input").value;
@@ -41,4 +54,18 @@ const subscribe = async () => {
     });
   //hide loader
   loader.style.display = "none";
+};
+
+const closeModal = () => {
+  const notificationModal = document.querySelector("#notificationModal");
+  notificationModal.style.display = "none";
+  sessionStorage.setItem("modalClosed", true);
+};
+
+const modalSubscribe = () => {
+  const notificationModal = document.querySelector("#notificationModal");
+  notificationModal.style.display = "none";
+  sessionStorage.setItem("modalClosed", true);
+  const url = window.location.href + "#demo";
+  location.href = url;
 };

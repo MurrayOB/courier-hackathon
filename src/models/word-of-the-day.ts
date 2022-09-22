@@ -3,4 +3,6 @@ export interface IWordOfTheDay {
   description: string;
   date: Date;
   word?: string;
+  spanish?: string;
+  german?: string;
 }
