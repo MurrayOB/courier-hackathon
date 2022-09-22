@@ -5,6 +5,9 @@ import {
 } from "../services/subscription";
 import { CourierClient } from "@trycourier/courier";
 import { translateWord } from "../services/fetch-random-word";
+import { fetchWordOfTheDay } from "../services/word-of-the-day";
+import { IWordOfTheDay } from "../models/word-of-the-day";
+import { mailWord } from "../services/mail";
 
 const subscribe = async (req: Request, res: Response) => {
   const email = req.query.email as string;
@@ -24,6 +27,7 @@ const subscribe = async (req: Request, res: Response) => {
     authorizationToken: process.env.courier_api_key,
   });
 
+  //send welcome word
   const word = await translateWord("welcome", language);
   const { requestId } = await courier.send({
     message: {
@@ -37,6 +41,11 @@ const subscribe = async (req: Request, res: Response) => {
       },
     },
   });
+
+  //send word of the day
+  const wordOfTheDay: IWordOfTheDay = await fetchWordOfTheDay();
+  wordOfTheDay.word = await translateWord(wordOfTheDay.translation, language);
+  await mailWord([{ email: email, language: language }], wordOfTheDay);
   return res.status(202).json({ success: true, message: "Subscribed" });
 };
 
